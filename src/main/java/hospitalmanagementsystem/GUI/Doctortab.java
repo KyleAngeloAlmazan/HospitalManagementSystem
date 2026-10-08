@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import java.util.LinkedList;
 import javax.swing.*;
+
 /**
  *
  * @author Mikeyks
@@ -18,8 +19,10 @@ public class Doctortab extends JFrame implements ActionListener{
     private JLabel txtTop, logName, logPass;
     private JTextField txtName, txtPass;
     private JButton btnLogin, btnBack;
+    //comment
     
     public Doctortab(){
+        
         setTitle("HOSPITAL MANAGEMENT APP");
         setSize(900, 500);
         setLayout(null);
