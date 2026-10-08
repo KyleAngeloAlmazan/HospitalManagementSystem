@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Mikeyks
@@ -16,7 +17,8 @@ public class Patienttab extends JFrame implements ActionListener {
     private JLabel txtTitle, patname, patage, patgenlab, patillness, medhist, apptsched, docappt, patID;
     private JComboBox<String> patgender, avaibdocs;
     private JTextField patnameF, patageF, apptschedF, patIDF;
-    private JTextArea patillnessF, medhistF, patres;
+    private JTextArea patillnessF, medhistF; 
+    private DefaultTableModel patres;
     private JButton btnBack, btnAdd, btnRemove;
     private String[] gend = {"male", "female", "trans(male/female)"}; 
     private String[] avaib = {};
@@ -114,10 +116,14 @@ public class Patienttab extends JFrame implements ActionListener {
         avaibdocs.setFont(new Font("Western", Font.PLAIN, 14));
         add(avaibdocs);
         
-        patres = new JTextArea();
-        patres.setEditable(false);
-        JScrollPane scroll = new JScrollPane(patres);
-        scroll.setBounds(10, 275, 720, 170);
+        patres = new DefaultTableModel();
+        patres.addColumn("patient name:");
+        patres.addColumn("patient age:");
+        patres.addColumn("Appointment Date");
+        patres.addColumn("See Doctor:");
+        JTable tab = new JTable(patres);
+        JScrollPane scroll = new JScrollPane(tab);
+        scroll.setBounds(10, 275, 720, 160);
         scroll.setFont(new Font("Western", Font.PLAIN, 14));
         add(scroll);
                 
