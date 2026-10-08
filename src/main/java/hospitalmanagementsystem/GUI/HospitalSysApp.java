@@ -28,8 +28,7 @@ import javax.swing.*;
  */
 public class HospitalSysApp extends JFrame implements ActionListener{
     private JLabel Title, landing,
-            docname, docspec, patientlist,
-            aptID, patID, DocID, DoA;
+            aptID, DoA;
     private JTextField
             docnameF, docspecF, patientlistF,
             aptIDF, patIDF, DocIDF, DoAF; 
@@ -83,6 +82,11 @@ public class HospitalSysApp extends JFrame implements ActionListener{
             hospitalmanagementsystem.GUI.Doctortab doc = new hospitalmanagementsystem.GUI.Doctortab();
             this.setVisible(false);
             doc.setVisible(true);
+        }
+        else if (e.getSource() == gtappt) {
+            hospitalmanagementsystem.GUI.Appointmenttab appt = new hospitalmanagementsystem.GUI.Appointmenttab();
+            this.setVisible(false);
+            appt.setVisible(true);
         }
     }
 }

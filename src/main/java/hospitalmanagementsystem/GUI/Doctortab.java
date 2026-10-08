@@ -27,6 +27,7 @@ public class Doctortab extends JFrame implements ActionListener{
         setSize(900, 500);
         setLayout(null);
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(this);
         
         txtTop = new JLabel("Doctor Log-In");
@@ -72,6 +73,13 @@ public class Doctortab extends JFrame implements ActionListener{
             hospitalmanagementsystem.GUI.HospitalSysApp menu = new hospitalmanagementsystem.GUI.HospitalSysApp();
             this.setVisible(false);
             menu.setVisible(true);
+        }
+        else if (e.getSource()== btnLogin) {
+            
+            //Caller part to DoctorHomepage
+            hospitalmanagementsystem.GUI.Doctorhomepage app =new hospitalmanagementsystem.GUI.Doctorhomepage();
+            this.setVisible(false);
+           app.setVisible(true);
         }
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
