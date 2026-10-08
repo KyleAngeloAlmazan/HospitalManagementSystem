@@ -4,10 +4,19 @@
  */
 package hospitalmanagementsystem.GUI;
 
+import javax.swing.*;
+
 /**
  *
  * @author Mikeyks
  */
-public class Appointmenttab {
+public class Appointmenttab extends JFrame {
     
+    Appointmenttab() {
+        setSize(870, 500);
+        setLayout(null);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(this);
+    }
 }

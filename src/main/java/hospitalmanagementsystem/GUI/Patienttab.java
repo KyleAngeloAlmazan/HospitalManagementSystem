@@ -13,9 +13,9 @@ import javax.swing.*;
  * @author Mikeyks
  */
 public class Patienttab extends JFrame implements ActionListener {
-    private JLabel txtTitle, patname, patage, patgenlab, patillness, medhist, apptsched, docappt;
+    private JLabel txtTitle, patname, patage, patgenlab, patillness, medhist, apptsched, docappt, patID;
     private JComboBox<String> patgender, avaibdocs;
-    private JTextField patnameF, patageF, apptschedF;
+    private JTextField patnameF, patageF, apptschedF, patIDF;
     private JTextArea patillnessF, medhistF, patres;
     private JButton btnBack, btnAdd, btnRemove;
     private String[] gend = {"male", "female", "trans(male/female)"}; 
@@ -26,6 +26,7 @@ public class Patienttab extends JFrame implements ActionListener {
         setSize(870, 500);
         setLayout(null);
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(this);
         
         txtTitle = new JLabel("Book an Appointment");
@@ -37,6 +38,16 @@ public class Patienttab extends JFrame implements ActionListener {
         patname.setBounds(10, 40, 190, 50);
         patname.setFont(new Font("Western", Font.PLAIN, 14));
         add(patname);
+        
+        patID = new JLabel("Patient's ID: ");
+        patID.setBounds(400, 77, 190, 50);
+        patID.setFont(new Font("Western", Font.PLAIN, 14));
+        add(patID);
+        
+        patIDF = new JTextField();
+        patIDF.setBounds(480, 93, 250, 20);
+        patIDF.setFont(new Font("Western", Font.PLAIN, 14));
+        add(patIDF);
         
         patnameF = new JTextField();
         patnameF.setBounds(120, 55, 250, 20);
