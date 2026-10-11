@@ -5,6 +5,8 @@
 package hospitalmanagementsystem.GUI;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Mikeyks
  */
-public class Appointmenttab extends JFrame {
+public class Appointmenttab extends JFrame implements ActionListener {
     private JLabel title, seeappt, search;
     private JTextField searchF;
     private DefaultTableModel sched;
@@ -67,4 +69,16 @@ public class Appointmenttab extends JFrame {
         btnback.setBounds(760, 400, 70, 50);
         add(btnback); 
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnsrch) {
+            //logic here
+    }    
+         if (e.getSource() == btnback) {
+           hospitalmanagementsystem.GUI.HospitalSysApp menu = new hospitalmanagementsystem.GUI.HospitalSysApp();
+            this.setVisible(false);
+            menu.setVisible(true);
+   }
+}
 }
