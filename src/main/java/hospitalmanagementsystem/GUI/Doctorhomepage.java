@@ -5,6 +5,8 @@
 package hospitalmanagementsystem.GUI;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Mikeyks
  */
-public class Doctorhomepage extends JFrame{
+public class Doctorhomepage extends JFrame implements ActionListener {
     private JLabel greeting, docname, docspec, patientlist, DocID, Src;
     private DefaultTableModel patientsched;
     private JButton btnSearch,  btnBack;
@@ -79,5 +81,21 @@ public class Doctorhomepage extends JFrame{
         btnBack = new JButton("Back");
         btnBack.setBounds(760, 400, 70, 50);
         add(btnBack); 
+        
+        btnBack.addActionListener(this);
+        btnSearch.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnBack) {
+             hospitalmanagementsystem.GUI.HospitalSysApp menu = new hospitalmanagementsystem.GUI.HospitalSysApp();
+            this.setVisible(false);
+            menu.setVisible(true);
+        }
+        
+        if (e.getSource() == btnSearch){
+            //logic here!!
+        }
     }
 }
