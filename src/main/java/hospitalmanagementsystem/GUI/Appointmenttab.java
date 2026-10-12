@@ -56,6 +56,8 @@ public class Appointmenttab extends JFrame implements ActionListener {
         sched.addColumn("Appointment Date");
         sched.addColumn("Patient ID:");
         JTable tab = new JTable(sched);
+        tab.getTableHeader().setReorderingAllowed(false);
+        tab.getTableHeader().setResizingAllowed(false);
         JScrollPane scroll = new JScrollPane(tab);
         scroll.setBounds(10, 100, 720, 305);
         scroll.setFont(new Font("Western", Font.PLAIN, 14));

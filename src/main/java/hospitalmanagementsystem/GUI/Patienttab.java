@@ -122,6 +122,8 @@ public class Patienttab extends JFrame implements ActionListener {
         patres.addColumn("Appointment Date");
         patres.addColumn("See Doctor:");
         JTable tab = new JTable(patres);
+        tab.getTableHeader().setReorderingAllowed(false);
+        tab.getTableHeader().setResizingAllowed(false);
         JScrollPane scroll = new JScrollPane(tab);
         scroll.setBounds(10, 275, 720, 160);
         scroll.setFont(new Font("Western", Font.PLAIN, 14));
