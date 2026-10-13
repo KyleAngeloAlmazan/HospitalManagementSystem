@@ -19,6 +19,7 @@ public class Patienttab extends JFrame implements ActionListener {
     private JTextField patnameF, patageF, apptschedF, patIDF;
     private JTextArea patillnessF, medhistF; 
     private DefaultTableModel patres;
+    private JTable tab; // CHANGED/ADDED: Made class-level so actionPerformed can access it
     private JButton btnBack, btnAdd, btnRemove;
     private String[] gend = {"male", "female", "trans(male/female)"}; 
     private String[] avaib = {};
@@ -121,9 +122,11 @@ public class Patienttab extends JFrame implements ActionListener {
         patres.addColumn("patient age:");
         patres.addColumn("Appointment Date");
         patres.addColumn("See Doctor:");
-        JTable tab = new JTable(patres);
+        
+        tab = new JTable(patres); // CHANGED/ADDED: Initialized class-level table variable (removed local 'JTable' declaration)
         tab.getTableHeader().setReorderingAllowed(false);
         tab.getTableHeader().setResizingAllowed(false);
+        
         JScrollPane scroll = new JScrollPane(tab);
         scroll.setBounds(10, 275, 720, 160);
         scroll.setFont(new Font("Western", Font.PLAIN, 14));
@@ -156,40 +159,38 @@ public class Patienttab extends JFrame implements ActionListener {
         }
         else if(e.getSource() == btnRemove){
             // logic here!!
-            String text = patres.getText();
-        if (!text.isEmpty()) {
-            patres.setText("");
-        } else {
-            JOptionPane.showMessageDialog(this, "No appointments to remove.");
+            
+            // CHANGED/ADDED: Fixed error by using table row selection methods instead of .getText()/.setText()
+            int selectedRow = tab.getSelectedRow();
+            if (selectedRow != -1) {
+                patres.removeRow(selectedRow);
+            } else {
+                JOptionPane.showMessageDialog(this, "No appointments to remove.");
+            }
         }
-
-    }
         
         else if(e.getSource() == btnAdd) {
             //logic here!!
             String name = patnameF.getText().trim();
-        String age = patageF.getText().trim();
-        String gender = (String) patgender.getSelectedItem();
-        String concern = patillnessF.getText().trim();
-        String history = medhistF.getText().trim();
-        String date = apptschedF.getText().trim();
-        String doctor = (String) avaibdocs.getSelectedItem();
+            String age = patageF.getText().trim();
+            String gender = (String) patgender.getSelectedItem();
+            String concern = patillnessF.getText().trim();
+            String history = medhistF.getText().trim();
+            String date = apptschedF.getText().trim();
+            String doctor = (String) avaibdocs.getSelectedItem();
 
-        if (name.isEmpty() || age.isEmpty() || concern.isEmpty() || date.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in the required fields.");
-        } else {
-            patres.append(
-                    "Patient Name: " + name
-                    + "\nAge: " + age
-                    + "\nGender: " + gender
-                    + "\nConcern: " + concern
-                    + "\nMedical History: " + (history.isEmpty() ? "None" : history)
-                    + "\nAppointment Date: " + date
-                    + "\nDoctor: " + (doctor == null ? "Not selected" : doctor)
-                    + "\n------------------------------\n"
-            );
+            if (name.isEmpty() || age.isEmpty() || concern.isEmpty() || date.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill in the required fields.");
+            } else {
+                
+               //Fixed error by using .addRow() instead of .append() to push data into columns or list
+                patres.addRow(new Object[]{
+                    name, 
+                    age, 
+                    date, 
+                    (doctor == null || doctor.isEmpty()) ? "Not selected" : doctor
+                });
+            }
         }
     }
-}
-
 }
