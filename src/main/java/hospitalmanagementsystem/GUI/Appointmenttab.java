@@ -22,8 +22,10 @@ public class Appointmenttab extends JFrame implements ActionListener {
     private JButton btnsrch, btnback;
     private DefaultListModel<String> src;
     private LinkedList<String> srchlst;
+    private JTable tab;
     
     Appointmenttab() {
+        setTitle("APPOINTMENT MANAGER");
         setSize(870, 500);
         setLayout(null);
         setVisible(true);
@@ -50,16 +52,23 @@ public class Appointmenttab extends JFrame implements ActionListener {
         searchF.setFont(new Font("Western", Font.PLAIN, 14));
         add(searchF);
         
-         sched = new DefaultTableModel();
+         sched = new DefaultTableModel() {
+            @Override
+        public boolean isCellEditable(int row, int column) {
+       return false;
+   }
+    };
+        tab.setModel(sched);
         sched.addColumn("patient name:");
         sched.addColumn("patient age:");
         sched.addColumn("Appointment Date");
-        sched.addColumn("Patient ID:");
-        JTable tab = new JTable(sched);
+        sched.addColumn("Patient ID:"); 
+        
+        tab = new JTable(sched);
         tab.getTableHeader().setReorderingAllowed(false);
         tab.getTableHeader().setResizingAllowed(false);
         JScrollPane scroll = new JScrollPane(tab);
-        scroll.setBounds(10, 100, 720, 305);
+        scroll.setBounds(10, 100, 720, 335);
         scroll.setFont(new Font("Western", Font.PLAIN, 14));
         add(scroll);
         
@@ -70,9 +79,13 @@ public class Appointmenttab extends JFrame implements ActionListener {
         btnback = new JButton("Back");
         btnback.setBounds(760, 400, 70, 50);
         add(btnback); 
+        
+        btnsrch.addActionListener(this);
+        btnback.addActionListener(this);
     }
-
-    @Override
+   
+   @Override
+    
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnsrch) {
             //logic here
