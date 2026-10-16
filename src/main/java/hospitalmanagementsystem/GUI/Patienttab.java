@@ -117,9 +117,15 @@ public class Patienttab extends JFrame implements ActionListener {
         avaibdocs.setFont(new Font("Western", Font.PLAIN, 14));
         add(avaibdocs);
         
-        patres = new DefaultTableModel();
+        patres = new DefaultTableModel(){
+            @Override
+        public boolean isCellEditable(int row, int column) {
+       return false;
+   }
+    };
         patres.addColumn("patient name:");
         patres.addColumn("patient age:");
+        patres.addColumn("patient gender:");
         patres.addColumn("Appointment Date");
         patres.addColumn("See Doctor:");
         
@@ -158,8 +164,6 @@ public class Patienttab extends JFrame implements ActionListener {
             menu.setVisible(true);
         }
         else if(e.getSource() == btnRemove){
-            // logic here!!
-            
             // CHANGED/ADDED: Fixed error by using table row selection methods instead of .getText()/.setText()
             int selectedRow = tab.getSelectedRow();
             if (selectedRow != -1) {
@@ -179,14 +183,15 @@ public class Patienttab extends JFrame implements ActionListener {
             String date = apptschedF.getText().trim();
             String doctor = (String) avaibdocs.getSelectedItem();
 
-            if (name.isEmpty() || age.isEmpty() || concern.isEmpty() || date.isEmpty()) {
+            if (name.isEmpty() || age.isEmpty() || concern.isEmpty() || date.isEmpty() || gender.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please fill in the required fields.");
             } else {
                 
                //Fixed error by using .addRow() instead of .append() to push data into columns or list
                 patres.addRow(new Object[]{
                     name, 
-                    age, 
+                    age,
+                    gender,
                     date, 
                     (doctor == null || doctor.isEmpty()) ? "Not selected" : doctor
                 });
