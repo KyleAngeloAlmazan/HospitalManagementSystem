@@ -213,9 +213,10 @@ public class Patienttab extends JFrame implements ActionListener {
                 }
 
                 // 3. Create Patient object and insert into system DSA
-                Patient newPatient = new Patient();
-                newPatient.setId(patientId);
-                newPatient.setName(name);
+                // Assuming the constructor order is: (int id, String name, int age, String gender) 
+// Adjust the parameters to match your Patient.java class constructor order if needed:
+int patientAge = Integer.parseInt(ageText);
+Patient newPatient = new Patient(patientId, name, patientAge, gender);
                 
                 systemDataStructures.addPatient(newPatient); // Updates BST & HashMap
 
