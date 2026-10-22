@@ -58,7 +58,6 @@ public class Appointmenttab extends JFrame implements ActionListener {
        return false;
    }
     };
-        tab.setModel(sched);
         sched.addColumn("patient name:");
         sched.addColumn("patient age:");
         sched.addColumn("Appointment Date");
@@ -67,6 +66,7 @@ public class Appointmenttab extends JFrame implements ActionListener {
         tab = new JTable(sched);
         tab.getTableHeader().setReorderingAllowed(false);
         tab.getTableHeader().setResizingAllowed(false);
+        
         JScrollPane scroll = new JScrollPane(tab);
         scroll.setBounds(10, 100, 720, 335);
         scroll.setFont(new Font("Western", Font.PLAIN, 14));
@@ -85,7 +85,6 @@ public class Appointmenttab extends JFrame implements ActionListener {
     }
    
    @Override
-    
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnsrch) {
             //logic here
