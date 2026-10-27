@@ -6,6 +6,7 @@ package hospitalmanagementsystem.GUI;
 
 import hospitalmanagementsystem.dsa.SystemDataStructures;
 import hospitalmanagementsystem.model.Patient;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +25,7 @@ public class Patienttab extends JFrame implements ActionListener {
     private DefaultTableModel patres;
     private JTable tab; // Class-level variable so actionPerformed can access it
     private JButton btnBack, btnAdd, btnRemove;
+    private JPanel backgroundPanel;
     private String[] gend = {"male", "female", "trans(male/female)"}; 
     private String[] avaib = {};
     
@@ -42,6 +44,10 @@ public class Patienttab extends JFrame implements ActionListener {
         setTitle("HOSPITAL MANAGEMENT APP");
         setSize(870, 500);
         setLayout(null);
+        backgroundPanel = new JPanel();
+        backgroundPanel.setLayout(null);
+        backgroundPanel.setBackground(new Color(153, 197, 144));
+        setContentPane(backgroundPanel);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(this);
@@ -53,82 +59,82 @@ public class Patienttab extends JFrame implements ActionListener {
         
         patname = new JLabel("Patient's name: ");
         patname.setBounds(10, 40, 190, 50);
-        patname.setFont(new Font("Western", Font.PLAIN, 14));
+        patname.setFont(new Font("Western", Font.BOLD, 14));
         add(patname);
         
         patID = new JLabel("Patient's ID: ");
         patID.setBounds(400, 77, 190, 50);
-        patID.setFont(new Font("Western", Font.PLAIN, 14));
+        patID.setFont(new Font("Western", Font.BOLD, 14));
         add(patID);
         
         patIDF = new JTextField();
-        patIDF.setBounds(480, 93, 250, 20);
-        patIDF.setFont(new Font("Western", Font.PLAIN, 14));
+        patIDF.setBounds(488, 93, 250, 20);
+        patIDF.setFont(new Font("Western", Font.BOLD, 14));
         add(patIDF);
         
         patnameF = new JTextField();
         patnameF.setBounds(120, 55, 250, 20);
-        patnameF.setFont(new Font("Western", Font.PLAIN, 14));
+        patnameF.setFont(new Font("Western", Font.BOLD, 14));
         add(patnameF);
         
         patage = new JLabel("patient's age: ");
         patage.setBounds(10, 60, 200, 50);
-        patage.setFont(new Font("Western", Font.PLAIN, 14));
+        patage.setFont(new Font("Western", Font.BOLD, 14));
         add(patage);
         
         patageF = new JTextField();
         patageF.setBounds(110, 75, 250, 20);
-        patageF.setFont(new Font("Western", Font.PLAIN, 14));
+        patageF.setFont(new Font("Western", Font.BOLD, 14));
         add(patageF);
         
         patgenlab = new JLabel("patient's gender: ");
         patgenlab.setBounds(10, 80, 200, 50);
-        patgenlab.setFont(new Font("Western", Font.PLAIN, 14));
+        patgenlab.setFont(new Font("Western", Font.BOLD, 14));
         add(patgenlab);
         
         patgender = new JComboBox<>(gend);
-        patgender.setBounds(120, 97, 200, 20);
-        patgender.setFont(new Font("Western", Font.PLAIN, 14));
+        patgender.setBounds(133, 97, 200, 20);
+        patgender.setFont(new Font("Western", Font.BOLD, 14));
         add(patgender);
         
         patillness = new JLabel("concern: ");
-        patillness.setBounds(450, 120, 200, 50);
-        patillness.setFont(new Font("Western", Font.PLAIN, 14));
+        patillness.setBounds(482, 120, 200, 50);
+        patillness.setFont(new Font("Western", Font.BOLD, 14));
         add(patillness);
         
         patillnessF = new JTextArea();
-        patillnessF.setBounds(510, 141, 270, 60);
-        patillnessF.setFont(new Font("Western", Font.PLAIN, 14));
+        patillnessF.setBounds(545, 141, 270, 60);
+        patillnessF.setFont(new Font("Western", Font.BOLD, 14));
         add(patillnessF);
         
         medhist = new JLabel("Previous Medical History: ");
         medhist.setBounds(10, 120, 200, 50);
-        medhist.setFont(new Font("Western", Font.PLAIN, 14));
+        medhist.setFont(new Font("Western", Font.BOLD, 14));
         add(medhist);
         
         medhistF = new JTextArea();
-        medhistF.setBounds(170, 141, 270, 60);
-        medhistF.setFont(new Font("Western", Font.PLAIN, 14));
+        medhistF.setBounds(191, 141, 270, 60);
+        medhistF.setFont(new Font("Western", Font.BOLD, 14));
         add(medhistF);
         
         apptsched = new JLabel("Set Appointment Date (MM/DD/YY): ");
-        apptsched.setBounds(10, 207, 250, 50);
-        apptsched.setFont(new Font("Western", Font.PLAIN, 15));
+        apptsched.setBounds(10, 207, 270, 50);
+        apptsched.setFont(new Font("Western", Font.BOLD, 15));
         add(apptsched);
         
         apptschedF = new JTextField();
-        apptschedF.setBounds(240, 220, 350, 30);
-        apptschedF.setFont(new Font("Western", Font.PLAIN, 14));
+        apptschedF.setBounds(260, 220, 350, 30);
+        apptschedF.setFont(new Font("Western", Font.BOLD, 14));
         add(apptschedF);
         
         docappt = new JLabel("See Doctor: ");
         docappt.setBounds(400, 40, 190, 50);
-        docappt.setFont(new Font("Western", Font.PLAIN, 14));
+        docappt.setFont(new Font("Western", Font.BOLD, 14));
         add(docappt);
         
         avaibdocs = new JComboBox<>(avaib);
-        avaibdocs.setBounds(480, 55, 250, 20);
-        avaibdocs.setFont(new Font("Western", Font.PLAIN, 14));
+        avaibdocs.setBounds(488, 55, 250, 20);
+        avaibdocs.setFont(new Font("Western", Font.BOLD, 14));
         add(avaibdocs);
         
         patres = new DefaultTableModel(){
