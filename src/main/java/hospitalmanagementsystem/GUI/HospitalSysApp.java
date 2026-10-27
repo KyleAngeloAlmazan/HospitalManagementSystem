@@ -18,6 +18,7 @@ DoA = Date of Appointment
  */
 
 package hospitalmanagementsystem.GUI;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,17 +34,25 @@ public class HospitalSysApp extends JFrame implements ActionListener{
             docnameF, docspecF, patientlistF,
             aptIDF, patIDF, DocIDF, DoAF; 
    private JButton gtpatient, gtdoc, gtappt;
+   private JPanel backgroundPanel;
     
     public HospitalSysApp () {
         setTitle("HOSPITAL MANAGEMENT APP");
         setSize(600, 600);
         setLayout(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        backgroundPanel = new JPanel();
+        backgroundPanel.setLayout(null);
+        backgroundPanel.setBackground(new Color(153, 197, 144));
+        setContentPane(backgroundPanel);
         setVisible(true);
         this.setLocationRelativeTo(this);
         
-        Title = new JLabel("Welcome to [name] Hospital!");
-        Title.setBounds(160, 5, 280, 80);
-        Title.setFont(new Font("Western", Font.PLAIN, 20));
+        Title = new JLabel("""
+                           Welcome to De Santa Ambroccio
+                            Hospital!""");
+        Title.setBounds(107, 5, 400, 100);
+        Title.setFont(new Font("Western", Font.BOLD, 20));
         add(Title);
         
         landing = new JLabel("How can we help you?");
