@@ -5,11 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorManager {
-    
+    private static DoctorManager instance;
     private List<Doctor> doctorList;
 
-    public DoctorManager() {
+    private DoctorManager() {
         this.doctorList = new ArrayList<>();
+        
+        // Add default sample doctors so your ComboBox isn't empty on start
+        // (Adjust constructor arguments based on your Doctor model fields, e.g., ID, Name, Specialty)
+        doctorList.add(new Doctor(1, "Dr. Smith", "Cardiology"));
+        doctorList.add(new Doctor(2, "Dr. Johnson", "Pediatrics"));
+        doctorList.add(new Doctor(3, "Dr. Williams", "General Medicine"));
+    }
+
+    public static synchronized DoctorManager getInstance() {
+        if (instance == null) {
+            instance = new DoctorManager();
+        }
+        return instance;
     }
 
     // Add a new doctor 
