@@ -1,6 +1,8 @@
 package hospitalmanagementsystem.model;
 
 public class Appointments implements Comparable<Appointments> {
+    // The ID the database gives this appointment when it is saved (0 until then)
+    private int appointmentId;
     private String patientName;
     private int patientAge;
     private String patientGender;
@@ -26,6 +28,7 @@ public class Appointments implements Comparable<Appointments> {
     }
 
     // Getters
+    public int getAppointmentId() { return appointmentId; }
     public String getPatientName() { return patientName; }
     public int getPatientAge() { return patientAge; }
     public String getPatientGender() { return patientGender; }
@@ -35,6 +38,9 @@ public class Appointments implements Comparable<Appointments> {
     public String getConcern() { return concern; }
     public String getAppointmentDate() { return appointmentDate; }
     public int getUrgencyLevel() { return urgencyLevel; }
+
+    // Setter for the database ID
+    public void setAppointmentId(int appointmentId) { this.appointmentId = appointmentId; }
 
     @Override
     public int compareTo(Appointments other) {
